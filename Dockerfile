@@ -3,9 +3,9 @@ RUN apt-get update && apt-get install make git
 
 RUN mkdir /sqldef && git -C /sqldef init
 WORKDIR /sqldef
-ENV VERSION master
+ARG VERSION
 RUN git remote add origin https://github.com/k0kubun/sqldef && \
-  git fetch origin --depth=1 "$VERSION" && \
+  git fetch origin --depth=1 "${VERSION:-master}" && \
   git reset --hard FETCH_HEAD
 
 RUN export GOPATH=/go/; \
