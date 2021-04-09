@@ -1,5 +1,5 @@
-FROM golang:1.16-alpine
-RUN apk add --no-cache build-base make gcc git
+FROM golang:buster
+RUN apt-get update && apt-get install make git
 
 RUN mkdir /sqldef && git -C /sqldef init
 WORKDIR /sqldef
